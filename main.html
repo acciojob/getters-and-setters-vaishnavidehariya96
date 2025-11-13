@@ -1,16 +1,68 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧑‍🏫 Getters and Setters</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <h2>🧑‍🏫 Getters and Setters</h2>
+  <p>Open the console (F12 → Console) to see the output.</p>
 
+  <script>
+    // Person class
+    class Person {
+      constructor(name, age) {
+        this._name = name;
+        this._age = age;
+      }
+
+      // Getter for name
+      get name() {
+        return this._name;
+      }
+
+      // Getter for age
+      get age() {
+        return this._age;
+      }
+
+      // Setter for age
+      set age(newAge) {
+        this._age = newAge;
+      }
+    }
+
+    // Student class inherits from Person
+    class Student extends Person {
+      study() {
+        console.log(`${this._name} is studying`);
+      }
+    }
+
+    // Teacher class inherits from Person
+    class Teacher extends Person {
+      teach() {
+        console.log(`${this._name} is teaching`);
+      }
+    }
+
+    // Expose classes for Cypress tests
+    window.Person = Person;
+    window.Student = Student;
+    window.Teacher = Teacher;
+
+    // Example usage (for your manual testing)
+    const person = new Person("John", 25);
+    console.log(person.name);  // John
+    person.age = 30;
+    console.log(person.age);   // 30
+
+    const student = new Student("Alice", 22);
+    student.study();  // Alice is studying
+
+    const teacher = new Teacher("Bob", 40);
+    teacher.teach();  // Bob is teaching
+  </script>
 </body>
-
 </html>
